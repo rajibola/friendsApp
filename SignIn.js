@@ -127,7 +127,7 @@ export default class SignIn extends React.Component {
           </Text>
         </View>
 
-        <Button name="Sign In" />
+        <Button name="Sign In" onPress={() => this.submit()} />
 
         {/* <TouchableOpacity style={styles.button} onPress={() => this.submit()}>
           <Text style={styles.buttonText}>Sign In</Text>

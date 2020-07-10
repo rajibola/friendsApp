@@ -5,7 +5,7 @@ import { wp, hp } from "./common";
 export default class Button extends React.Component {
   render() {
     return (
-      <TouchableOpacity style={styles.button} onPress={() => this.submit()}>
+      <TouchableOpacity style={styles.button} onPress={this.props.onPress}>
         <Text style={styles.buttonText}>{this.props.name}</Text>
       </TouchableOpacity>
     );
