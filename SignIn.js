@@ -11,6 +11,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import { wp, hp } from "./common";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import Button from "./Button";
 
 export default class SignIn extends React.Component {
   constructor() {
@@ -44,8 +45,8 @@ export default class SignIn extends React.Component {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: email,
-          password: password,
+          email,
+          password,
         }),
       })
         .then((response) => response.json())
@@ -126,9 +127,11 @@ export default class SignIn extends React.Component {
           </Text>
         </View>
 
-        <TouchableOpacity style={styles.button} onPress={() => this.submit()}>
+        <Button name="Sign In" />
+
+        {/* <TouchableOpacity style={styles.button} onPress={() => this.submit()}>
           <Text style={styles.buttonText}>Sign In</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     );
   };
@@ -154,11 +157,12 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   baseText: {
+    marginTop: hp(15),
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     width: wp(300),
-    marginBottom: hp(150),
+    marginBottom: hp(135),
   },
   checkbox: {
     width: 40,
