@@ -13,7 +13,7 @@ import { wp, hp } from "./common";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Button from "./Button";
 
-export default class SignIn extends React.Component {
+export default class SignUp extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -39,7 +39,7 @@ export default class SignIn extends React.Component {
     if (email.trim() === "" || password.trim() === "") {
       alert("enter a valid parameter");
     } else {
-      fetch(`https://reqres.in/api/login`, {
+      fetch(`https://reqres.in/api/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -84,8 +84,8 @@ export default class SignIn extends React.Component {
           </View>
         </View>
         <View style={styles.questionView}>
-          <Text style={styles.questionText}>Don't have an account?</Text>
-          <Text style={styles.signUpText}>Sign Up</Text>
+          <Text style={styles.questionText}>Already have an account?</Text>
+          <Text style={styles.signUpText}>Sign In</Text>
         </View>
       </View>
     );
@@ -94,6 +94,12 @@ export default class SignIn extends React.Component {
   renderBox = () => {
     return (
       <View style={styles.box}>
+        <TextInput
+          placeholder="Username"
+          style={styles.textInput}
+          placeholderTextColor="rgba(87, 96, 111,1.0)"
+          //   onChangeText={this.handleEmail}
+        />
         <TextInput
           placeholder="E-mail"
           keyboardType="email-address"
@@ -122,16 +128,16 @@ export default class SignIn extends React.Component {
             <Text style={styles.questionText}>Remember me</Text>
           </View>
 
-          <Text style={styles.questionText}>
+          {/* <Text style={styles.questionText}>
             Forgot <Text> Password</Text>
-          </Text>
+          </Text> */}
         </View>
 
-        <Button name="Sign In" onPress={() => this.submit()} />
+        <Button name="Sign Up" onPress={() => this.submit()} />
 
         {/* <TouchableOpacity style={styles.button} onPress={() => this.submit()}>
-          <Text style={styles.buttonText}>Sign In</Text>
-        </TouchableOpacity> */}
+            <Text style={styles.buttonText}>Sign In</Text>
+          </TouchableOpacity> */}
       </View>
     );
   };
@@ -162,7 +168,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     width: wp(300),
-    marginBottom: hp(135),
+    marginBottom: hp(135 - 56),
   },
   checkbox: {
     // width: 40,
@@ -208,7 +214,7 @@ const styles = StyleSheet.create({
   },
 
   box: {
-    width: wp(320),
+    minWidth: wp(320),
     height: hp(400),
     marginTop: hp(30),
     borderRadius: wp(10),
